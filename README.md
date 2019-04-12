@@ -19,6 +19,9 @@ Few important commands
 
 * pm2 start app.js
 
+* pm2 save
+* pm2 startup centos   # to start in background even reboot
+
 ##### - Restart app 
 
 * pm2 restart app.js

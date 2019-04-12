@@ -37,13 +37,22 @@ app.use(bodyParser.json());
 //get post data
 app.post('/route',   (req, res) => {
 
+
+    /*{
+        "OriginationNo": "442085950856",
+        "DestinationNo": "44208589657",
+        "AccountDynamicField": [{"Name": "CustomerID","Value": "666"}],
+        "DateAndTime": "2019-01-21 10:44:00",
+        "Location": "AM1"
+    }*/
+
     var p_OriginationNo  = req.body.OriginationNo;
     var p_DestinationNo  = req.body.DestinationNo;
     var p_DateAndTime  = req.body.DateAndTime;
     var p_AccountNo  = req.body.AccountNo == undefined ? '': req.body.AccountNo ;
-    var p_AccountID  = req.body.AccountID;
-    var p_AccountDynamicField  = req.body.OriginationNo == undefined ? '' : req.body.OriginationNo ;
-    var p_AccountDynamicFieldValue  = req.body.OriginationNo == undefined ? '' :  req.body.OriginationNo;
+    var p_AccountID  = req.body.AccountID == undefined ? 0: req.body.AccountID ;
+    var p_AccountDynamicField  = req.body.AccountDynamicField[0].Name == undefined ? '' : req.body.AccountDynamicField[0].Name ;
+    var p_AccountDynamicFieldValue  = req.body.AccountDynamicField[0].Value == undefined ? '' :  req.body.AccountDynamicField[0].Value;
     var p_Location  = req.body.Location;
 
 
