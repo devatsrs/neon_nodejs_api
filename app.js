@@ -44,20 +44,60 @@ app.post('/route',   (req, res) => {
         "AccountDynamicField": [{"Name": "CustomerID","Value": "666"}],
         "DateAndTime": "2019-01-21 10:44:00",
         "Location": "AM1"
-    }*/
+    }
+
+    {
+        "OriginationNo": "442085950856",
+        "DestinationNo": "44208589657",
+        "AccountID": 6,
+        "DateAndTime": "2019-01-21 10:44:00",
+        "Location": "AM1"
+    }
+
+     {
+     "OriginationNo": "442085950856",
+     "DestinationNo": "44208589657",
+     "AccountNo": 6,
+     "DateAndTime": "2019-01-21 10:44:00",
+     "Location": "AM1"
+     }
+    */
 
     var p_OriginationNo  = req.body.OriginationNo;
     var p_DestinationNo  = req.body.DestinationNo;
     var p_DateAndTime  = req.body.DateAndTime;
-    var p_AccountNo  = req.body.AccountNo == undefined ? '': req.body.AccountNo ;
+    var p_Location  = req.body.Location;
+
+ /*   var p_AccountNo  = req.body.AccountNo == undefined ? '': req.body.AccountNo ;
     var p_AccountID  = req.body.AccountID == undefined ? 0: req.body.AccountID ;
     var p_AccountDynamicField  = req.body.AccountDynamicField[0].Name == undefined ? '' : req.body.AccountDynamicField[0].Name ;
     var p_AccountDynamicFieldValue  = req.body.AccountDynamicField[0].Value == undefined ? '' :  req.body.AccountDynamicField[0].Value;
-    var p_Location  = req.body.Location;
+*/
+    var p_AccountNo = '';
+    var p_AccountID = 0;
+    var p_AccountDynamicField = '';
+    var p_AccountDynamicFieldValue = '';
+
+    if(typeof req.body.AccountNo != 'undefined'){
+        p_AccountNo  = req.body.AccountNo;
+
+    }else if (typeof req.body.AccountID != 'undefined'){
+        p_AccountID  = req.body.AccountID;
+
+    }else if (typeof req.body.AccountDynamicField  != 'undefined' &&  typeof req.body.AccountDynamicField[0].Name  != 'undefined' ){
+        p_AccountDynamicField  = req.body.AccountDynamicField[0].Name;
+
+        if (typeof req.body.AccountDynamicField  != 'undefined' &&  typeof req.body.AccountDynamicField[0].Value  != 'undefined' ){
+            p_AccountDynamicFieldValue  = req.body.AccountDynamicField[0].Value;
+        }
+    }
 
 
-    let sql = `call prc_RoutingByAccOriDestLoc('${p_OriginationNo}','${p_DestinationNo}','${p_DateAndTime}' ,'${p_AccountNo}',${p_AccountID},'${p_AccountDynamicField}','${p_AccountDynamicFieldValue}','${p_Location}' );`;
 
+    let sql = `call prc_RoutingByAccOriDestLoc('${p_OriginationNo}','${p_DestinationNo}','${p_DateAndTime}' ,'${p_AccountNo}','${p_AccountID}','${p_AccountDynamicField}','${p_AccountDynamicFieldValue}','${p_Location}' );`;
+  /* res.send(sql);
+   return;
+*/
     db.query(sql , (err, results) => {
 
         if(err) {
