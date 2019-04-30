@@ -1,7 +1,7 @@
 {
-  "name": "nodemysql",
+  "name": "neon_nodejs_api",
   "version": "1.0.0",
-  "description": "Sample App to work with Nodejs and mysql",
+  "description": "Neon Node js apis",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,0 +1,15 @@
+FROM node
+
+RUN mkdir -p nodejs_api
+
+WORKDIR nodejs_api
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "node", "app.js" ]

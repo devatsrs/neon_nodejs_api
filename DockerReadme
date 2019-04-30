@@ -1,0 +1,10 @@
+https://gist.github.com/bradtraversy/89fad226dc058a41b596d586022a9bd3
+https://buddy.works/guides/how-dockerize-node-application
+https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker
+https://rominirani.com/docker-tutorial-series-a7e6ff90a023
+
+Run following commands
+docker-compose build
+docker run -p 3000:3000 -d nodejs_api_app
+
+now browse with localhost.
